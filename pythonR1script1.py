@@ -14,15 +14,16 @@ if password:
     tn.read_until("Password: ")
     tn.write(password + "n/")
 
-tn.write("enable\n")
-tn.write("cisco\n")
-tn.write("config t\n")
-tn.write("int loop 0\n")
-tn.write("ip address 1.1.1.1 255.255.255.255\n")
-tn.write("int loop 1\n")
-tn.write("ip add 2.2.2.2 255.255.255.255\n")
-tn.write("router ospf 1\n")
-tn.write("network 0.0.0.0 255.255.255.255 area 0\n")
+#configure loopback address for router1
+tn.write("enable\n") #enter privileged exec mode
+tn.write("cisco\n") #password
+tn.write("config t\n") #configuration mode
+tn.write("int loop 0\n") #select interface loopback 0
+tn.write("ip add 1.1.1.1 255.255.255.255\n") #assign ip address
+tn.write("int loop 1\n") #select interface loopback 1
+tn.write("ip add 2.2.2.2 255.255.255.255\n") #assign ip address
+tn.write("router ospf 1\n") #assign routing protocol (open shortest path first)
+tn.write("network 0.0.0.0 255.255.255.255 area 0\n") #assign area
 tn.write("end\n")
 tn.write("exit\n")
 
