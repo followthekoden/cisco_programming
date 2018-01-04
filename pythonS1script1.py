@@ -18,17 +18,10 @@ if password:
 tn.write("enable\n") #enter privileged exec mode
 tn.write("cisco\n") #password
 tn.write("config t\n") #configuration mode
-tn.write("vlan 2\n")
-tn.write("desc Python_VLAN_2\n")
-tn.write("exit\n")
-tn.write("vlan 3\n")
-tn.write("exit\n")
-tn.write("vlan 4\n")
-tn.write("exit\n")
-tn.write("vlan 5\n")
-tn.write("exit\n")
-tn.write("vlan 6\n")
-tn.write("exit\n")
+for index in range (2,6):
+    tn.write("vlan "+ str(index)+"\n")
+    tn.write("desc Python_VLAN_"+str(index)+"\n")
+    tn.write("exit\n")
 
 th.write("end\n")
 tn.write("exit\n")
